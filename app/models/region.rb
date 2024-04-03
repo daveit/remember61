@@ -1,4 +1,4 @@
-class Region < ActiveRecord::Base
+class Region < ApplicationRecord
   has_many :villages
   has_many :individuals
   validates_associated :villages

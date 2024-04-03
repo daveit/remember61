@@ -1,4 +1,4 @@
-class MiscellaneousContactsController < ApplicationController
+class MiscellaneousContactsController < ApplicationRecord
   before_action :set_miscellaneous_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /miscellaneous_contacts

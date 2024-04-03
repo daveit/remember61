@@ -29,7 +29,13 @@ Rails.application.routes.draw do
   end
 
   resources :associates do
-    collection { post :import }
+    # collection { post :import }
+    collection do
+      get :financial
+      get :notfinancial
+      get :allassociates
+      get 'download_csv'
+    end
     resources :associate_payments
   end
 
@@ -38,6 +44,7 @@ Rails.application.routes.draw do
       get :financial
       get :notfinancial
       get :cancelled
+      get 'download_csv'
     end
     resources :ireceipts
   end
@@ -55,6 +62,7 @@ Rails.application.routes.draw do
       get :notfinancial
       get :prospect
       get :cancelled
+      get 'download_residents_csv'
     end
     resources :contacts
     resources :vreceipts

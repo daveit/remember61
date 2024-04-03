@@ -1,4 +1,4 @@
-class InewsController < ApplicationController
+class InewsController < ApplicationRecord
   before_action :set_inews, only: [:show, :edit, :update, :destroy]
 
   # GET /inews

@@ -1,2 +1,2 @@
-class Inews < ActiveRecord::Base
+class Inews < ApplicationRecord
 end

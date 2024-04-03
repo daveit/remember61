@@ -1,4 +1,4 @@
-class ContactsCategory < ActiveRecord::Base
+class ContactsCategory < ApplicationRecord
 
   has_many :miscellaneouscontacts
 

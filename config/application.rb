@@ -32,6 +32,8 @@ module WARVRA
     config.i18n.default_locale = :en
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    # removed the below line following upgrade from RoR 4 to 5
+    # config.active_record.raise_in_transactional_callbacks = true
+    # ActiveSupport.halt_callback_chains_on_return_false = true
   end
 end

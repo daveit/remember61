@@ -1,4 +1,4 @@
-class Ivillage < ActiveRecord::Base
+class Ivillage < ApplicationRecord
 
   has_many :individuals
   # validates_associated :individuals

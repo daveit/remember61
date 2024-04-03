@@ -1,4 +1,6 @@
-class VillagesController < ApplicationController
+  class VillagesController < ApplicationController
+  require 'csv'
+
   before_action :set_village, only: [:show, :show2, :edit, :update, :destroy]
 
   # GET /villages
@@ -102,6 +104,35 @@ class VillagesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to villages_url, notice: 'Village was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def download_residents_csv
+    @village = Village.find(params[:village_id])
+    village_name = @village.name
+    the_day = Date.today.strftime("%d")
+    the_month = Date.today.strftime("%m")
+    the_year = Date.today.strftime("%Y")
+    filename = (village_name + "_#{the_day}_#{the_month}_#{the_year}.csv" )
+    filename = filename.downcase
+    # residents = @village.residents
+    residents = @village.residents.where(dateceased: nil)
+
+    respond_to do |format|
+      # title = ["Village Residents"]
+      format.csv do
+        csv_data = CSV.generate(headers: true) do |csv|
+          #csv << title
+          csv << %w[Surname First Phone Email]
+
+          residents.each do |resident|
+            csv << [resident.surname, resident.first, resident.phone, resident.email]
+          end
+        end
+
+        #send_data csv_data, filename: "village_residents.csv"
+        send_data csv_data, filename: filename
+      end
     end
   end
 

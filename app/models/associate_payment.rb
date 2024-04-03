@@ -1,4 +1,4 @@
-class AssociatePayment < ActiveRecord::Base
+class AssociatePayment < ApplicationRecord
   belongs_to :associate
   belongs_to :pay_type  
 

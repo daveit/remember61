@@ -1,4 +1,4 @@
-class Title < ActiveRecord::Base
+class Title < ApplicationRecord
   has_many :contacts
   has_many :individuals
   validates_associated :contacts

@@ -1,4 +1,4 @@
-class AccAccount < ActiveRecord::Base
+class AccAccount < ApplicationRecord
   belongs_to :acc_type
   has_many :acc_trans
   validates :name, presence: true

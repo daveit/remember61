@@ -1,4 +1,4 @@
-class Suburb < ActiveRecord::Base
+class Suburb < ApplicationRecord
 	#has_many :villages
 
 	paginates_per 25

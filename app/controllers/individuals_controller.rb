@@ -77,6 +77,29 @@ class IndividualsController < ApplicationController
     end
   end
 
+  def download_csv
+    individual_financial = Individual.where(status_id: 1)
+    filename = "current_individual_members"
+    the_day = Date.today.strftime("%d")
+    the_month = Date.today.strftime("%m")
+    the_year = Date.today.strftime("%Y")
+    filename = (filename + "_#{the_day}_#{the_month}_#{the_year}.csv" )
+
+    respond_to do |format|
+      format.csv do
+        csv_data = CSV.generate(headers: true) do |csv|
+          csv << %w[First Name Surname Phone Mobile Email Village]
+
+          individual_financial.each do |individual|
+            csv << [individual.first, individual.last, individual.phone, individual.mobile, individual.email, individual.ivillage&.name]
+          end
+        end
+
+        send_data csv_data, filename: filename
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_individual
@@ -86,6 +109,6 @@ class IndividualsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def individual_params
       params.require(:individual).permit(:first, :last, :address1, :address2, :phone,
-        :mobile, :email, :financial_to, :suburb, :postcode, :status_id, :ivillage_id, :title_id, :region_id, :notes, {:icat_ids => []})
+        :mobile, :email, :financial_to, :suburb, :postcode, :status_id, :ivillage_id, :title_id, :region_id, :pay_type_id, :notes, {:icat_ids => []})
     end
 end

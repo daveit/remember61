@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
 
   # 0=user, 1=vip, 2=admin
   enum role: [:user, :vip, :admin]

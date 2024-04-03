@@ -1,2 +1,2 @@
-class AccLog < ActiveRecord::Base
+class AccLog < ApplicationRecord
 end

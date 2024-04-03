@@ -1,4 +1,4 @@
-class Vreceipt < ActiveRecord::Base
+class Vreceipt < ApplicationRecord
   belongs_to :village
   belongs_to :pay_type
 

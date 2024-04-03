@@ -2,9 +2,27 @@ class AssociatesController < ApplicationController
   before_action :set_individual, only: [:show, :edit, :update, :destroy]
 
   def index
-    @associates = Associate.all.order("surname ASC")
+    # @associates = Associate.all.order("surname ASC")
+    @associates = Associate.financial.order("surname ASC")
   end
+
+  def notfinancial
+    @associates = Associate.notfinancial.order("surname ASC")
+    render action: :index
+  end
+
+  def financial
+    @associates = Associate.financial.order("surname ASC")
+    render action: :index
+  end
+00
+  def allassociates
+    @associates = Associate.allassociates.order("surname ASC")
+    render action: :index
+  end
+
   
+
   def show
   end
 
@@ -41,10 +59,35 @@ class AssociatesController < ApplicationController
     end
   end
 
-  def import
+  def download_csv
+    associates_with_financialto = Associate.where.not(financialto: nil)
+    filename = "current_associates"
+    the_day = Date.today.strftime("%d")
+    the_month = Date.today.strftime("%m")
+    the_year = Date.today.strftime("%Y")
+    filename = (filename + "_#{the_day}_#{the_month}_#{the_year}.csv" )
+    #filename = filename.downcase
+
+    respond_to do |format|
+      format.csv do
+        csv_data = CSV.generate(headers: true) do |csv|
+          csv << %w[surname first title email]
+
+          associates_with_financialto.each do |associate|
+            csv << [associate.surname, associate.first, associate.title, associate.email]
+          end
+        end
+
+        send_data csv_data, filename: filename
+      end
+    end
+  end  
+
+=begin def import
     Associate.import(params[:file])
     redirect_to associates_path, notice: "Import complete!"
   end
+=end
 
   private
   def set_individual

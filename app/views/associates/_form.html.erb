@@ -21,7 +21,7 @@
           <%= f.input :notes, as: :text, label: 'Ad-hoc Notes', :input_html => { :cols => 10, :rows => 6, :style => 'width: 500px' } %>
           <%= f.input :management, as: :radio_buttons %>
           <% if current_user.try(:vip?) or current_user.try(:admin?) %>
-            <%= submit_tag "Save Associate", :class => "btn btn-small btn-success" %>
+            <%= submit_tag "Save Family Member", :class => "btn btn-small btn-success" %>
           <% end %>
         </div>
     <% end %>

@@ -13,12 +13,13 @@
 <div class="container-fluid">
   <div class="row">
   <div class="col-xs-12 col-sm-6 col-md-8">
-    <h2>Associate Details</h2>
+    <h2>Family Details</h2>
     <p id="notice"><%= notice %></p>
     <h3>
       <%# <strong>Name:</strong> %>
-      <strong><%= (@associate.first + " " + @associate.surname + " - " + @associate.title) %></strong>
+      <strong><%= (@associate.first + " " + @associate.surname) %></strong>
     </h3>
+    <p><%= "(" + @associate.title + ")" %></p>
 
     <p>
       <strong>Email Address:</strong>
@@ -38,12 +39,15 @@
     </p>
 
     <hr class="style-one">
+
     <h3>
       <strong>Payer Name:
-      <%= (@associate.payer_name + " - " + @associate.payer_title ) %>
+        <%= @associate.payer_name %>
       </strong>
-    </h3>
-
+</h3>
+    
+      <p><%= "(" + @associate.payer_title + ")" %></p>
+    
     <p>
       <strong>Email address:</strong>
       <%= @associate.payer_email %>

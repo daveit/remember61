@@ -1,2 +1,2 @@
-class AppSetting < ActiveRecord::Base
+class AppSetting < ApplicationRecord
 end

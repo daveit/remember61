@@ -1,4 +1,4 @@
-class Position < ActiveRecord::Base
+class Position < ApplicationRecord
   has_many :contacts
   validates_associated :contacts
   

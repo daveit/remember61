@@ -3,11 +3,16 @@
 
     <p id="notice"><%= notice %></p>
 
+    <h2>Listing Family Members</h2>
+      <p>
+           <%= link_to "Financial", associates_path, :class => "btn btn-small btn-success" %>
+           <%= link_to "Not Financial", notfinancial_associates_path, :class => "btn btn-small btn-success" %>
+           <%= link_to "All Family", allassociates_associates_path, :class => "btn btn-small btn-success" %>
     <% if current_user.try(:vip?) or current_user.try(:admin?) %>
-        <%= link_to 'New Associate', new_associate_path, :class => "btn btn-sm btn-success" %>
+        <%= link_to 'New Family', new_associate_path, :class => "btn btn-small btn-primary" %>
+        <%= link_to 'Download CSV', download_csv_associates_path(format: :csv), :class => "btn btn-small btn-danger" %>
     <% end %>
-
-    <h2>Associates</h2>
+      </p>
 
     <div class="media">
       <div class="media-body">
@@ -36,7 +41,7 @@
                 <% if current_user.try(:vip?) or current_user.try(:admin?) %>
                     <td><%= link_to 'Edit', edit_associate_path(associate), :class => "btn btn-xs btn-success" %></td>
                     <% if current_user.try(:admin?) %>
-                      <td><%= link_to 'x', associate, method: :delete, data: {confirm: 'Permanently Remove this Associate?'}, :class => "btn btn-xs btn-danger" %></td>
+                      <td><%= link_to 'x', associate, method: :delete, data: {confirm: 'Permanently Remove this Family?'}, :class => "btn btn-xs btn-danger" %></td>
                     <% end %>
                 <% end %>
               </tr>
@@ -48,12 +53,3 @@
 
   </div>
 </div>
-
-<!-- <h3>Import Associates</h3>
-
-<%= form_tag import_associates_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <br>
-    <%= submit_tag "Upload Associates CSV File" %>
-<% end %> 
--->

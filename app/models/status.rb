@@ -1,4 +1,4 @@
-class Status < ActiveRecord::Base
+class Status < ApplicationRecord
   has_many :villages
   has_many :individuals
   # validates_associated :villages

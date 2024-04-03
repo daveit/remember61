@@ -85,10 +85,11 @@ end
     end
   end
 
-  def import
+=begin  def import
    Resident.import(params[:file])
    redirect_to residents_path, notice: "Import complete!"
   end
+=end
 
   private
     # Use callbacks to share common setup or constraints between actions.

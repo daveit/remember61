@@ -1,2 +1,2 @@
-class Reminder < ActiveRecord::Base
+class Reminder < ApplicationRecord
 end

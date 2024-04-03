@@ -1,4 +1,4 @@
-class PayType < ActiveRecord::Base
+class PayType < ApplicationRecord
 
   has_many :ireceipts
   has_many :vreceipts

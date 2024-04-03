@@ -1,4 +1,4 @@
-class Resident < ActiveRecord::Base
+class Resident < ApplicationRecord
   belongs_to :village
 
   validates :surname, presence: true

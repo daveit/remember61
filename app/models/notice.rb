@@ -1,4 +1,4 @@
-class Notice < ActiveRecord::Base
+class Notice < ApplicationRecord
   validates :title, presence: true
   validates :notes, presence: true
 end

@@ -1,5 +1,4 @@
-class Individual < ActiveRecord::Base
-
+class Individual < ApplicationRecord
   belongs_to :ivillage
   belongs_to :status
   belongs_to :title

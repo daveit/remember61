@@ -1,3 +1,3 @@
-class MiscellaneousContact < ActiveRecord::Base
+class MiscellaneousContact < ApplicationRecord
   belongs_to :ContactsCategory
 end

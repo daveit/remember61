@@ -25,7 +25,7 @@ class PayTypesController < ApplicationController
   # POST /pay_types.json
   def create
     @pay_type = PayType.new(pay_type_params)
-
+  
     respond_to do |format|
       if @pay_type.save
         format.html { redirect_to @pay_type, notice: 'Pay type was successfully created.' }

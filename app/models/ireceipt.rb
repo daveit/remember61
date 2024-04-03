@@ -1,4 +1,4 @@
-class Ireceipt < ActiveRecord::Base
+class Ireceipt < ApplicationRecord
 
   belongs_to :individual
   belongs_to :pay_type

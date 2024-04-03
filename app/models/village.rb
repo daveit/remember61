@@ -1,4 +1,4 @@
-class Village < ActiveRecord::Base
+class Village < ApplicationRecord
 
   belongs_to :status
   belongs_to :region
